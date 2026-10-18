@@ -27,6 +27,41 @@
   display: none;
 }
 
+.closing-cta {
+  background: #123d32;
+}
+
+.services-band {
+  background: #123d32;
+}
+
+.services-inner .section-eyebrow,
+.services-inner > p {
+  color: #cfe3d8;
+}
+
+.services-inner h2 {
+  color: #fff;
+}
+
+.services-inner h2 em {
+  color: #83e6b1;
+}
+
+.services-inner .button-dark {
+  background: #f7fbf8;
+  color: #123d32;
+}
+
+.services-inner .button-dark:hover {
+  background: #dfece4;
+}
+
+.service-decoration {
+  color: #78c6a1;
+  opacity: .28;
+}
+
 .hero-orbit-accent {
   position: absolute;
   z-index: 2;
