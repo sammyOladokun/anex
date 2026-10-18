@@ -20,6 +20,18 @@ function App() {
       <section className="hero" id="home">
         <div className="hero-frame">
           <div className="hero-light-sweep" aria-hidden="true" />
+          <svg className="hero-orbit-accent" viewBox="0 0 1440 720" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="hero-orbit-glow" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#2be892" stopOpacity="0" />
+                <stop offset="0.45" stopColor="#55f5b0" stopOpacity="0.72" />
+                <stop offset="0.72" stopColor="#d9fff0" stopOpacity="0.95" />
+                <stop offset="1" stopColor="#69efb0" stopOpacity="0.12" />
+              </linearGradient>
+            </defs>
+            <path d="M 135 515 C 245 405, 382 391, 522 430 C 615 456, 669 486, 731 500" />
+            <path className="hero-orbit-accent__glow" d="M 135 515 C 245 405, 382 391, 522 430 C 615 456, 669 486, 731 500" />
+          </svg>
           <img className="hero-model-image" src="/images/hero-model-poster.png" alt="" aria-hidden="true" />
           <header className="hero-header">
             <a className="wordmark" href="#home" aria-label="Anex home">
@@ -98,4 +110,3 @@ function App() {
 }
 
 export default App
-

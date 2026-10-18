@@ -17,19 +17,39 @@
   border: 0;
   border-radius: 0;
   background:
+    radial-gradient(ellipse 38% 73% at 51% 57%, #52eeb25c 0%, #20976a36 38%, #123d3200 76%),
     radial-gradient(ellipse at 27% 70%, #1c664b88 0%, #123d3200 49%),
     linear-gradient(115deg, #071b16 0%, #0d3027 51%, #123d32 100%);
   box-shadow: none;
 }
 
 .hero-light-sweep {
+  display: none;
+}
+
+.hero-orbit-accent {
   position: absolute;
-  z-index: 0;
-  inset: 0 0 0 auto;
-  width: 49%;
-  border-radius: 56% 0 0 44% / 100% 0 0 100%;
-  background: linear-gradient(145deg, #f3f7f4 0%, #e2ebe6 46%, #afc4b8 100%);
-  transform: translateX(13%);
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero-orbit-accent path {
+  fill: none;
+  stroke: #82ffd0;
+  stroke-linecap: round;
+  stroke-width: 1.4;
+  opacity: .38;
+}
+
+.hero-orbit-accent .hero-orbit-accent__glow {
+  stroke: url(#hero-orbit-glow);
+  stroke-width: 3.6;
+  opacity: 1;
+  filter: drop-shadow(0 0 5px #c9ffeb) drop-shadow(0 0 12px #4af0a9cc);
 }
 
 .hero-header {
@@ -116,11 +136,11 @@
 .hero-model-image {
   position: absolute;
   z-index: 1;
-  top: 3%;
+  top: -2%;
   bottom: 0;
   left: 22%;
   width: 56%;
-  height: 97%;
+  height: 102%;
   object-fit: contain;
   object-position: center bottom;
   mix-blend-mode: screen;
@@ -205,7 +225,7 @@
 .hero-features {
   position: absolute;
   z-index: 4;
-  top: 33%;
+  top: 28%;
   right: 3.4%;
   width: 190px;
   padding: 14px 15px;
@@ -225,13 +245,13 @@
 .hero-stat {
   position: absolute;
   z-index: 4;
-  left: 13%;
-  bottom: 9%;
-  width: 245px;
-  min-height: 144px;
-  padding: 16px 19px;
+  left: 25%;
+  bottom: 1%;
+  width: 200px;
+  min-height: 122px;
+  padding: 13px 16px;
   display: grid;
-  grid-template-columns: 1fr 48px;
+  grid-template-columns: 1fr 42px;
   grid-template-rows: auto auto auto auto;
   align-content: center;
   gap: 6px 8px;
@@ -244,18 +264,27 @@
 }
 
 .hero-stat .stat-label { grid-column: 1; grid-row: 1; color: #dcebe2; font-size: 11px; }
-.hero-stat strong { grid-column: 1; grid-row: 2; margin: 0; color: #fff; font: 800 30px/1 Manrope, sans-serif; letter-spacing: -.7px; }
-.hero-stat .stat-spark { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: #7ce5aa; font: 400 38px/1 Manrope, sans-serif; transform: rotate(-18deg); }
+.hero-stat strong { grid-column: 1; grid-row: 2; margin: 0; color: #fff; font: 800 27px/1 Manrope, sans-serif; letter-spacing: -.7px; }
+.hero-stat .stat-spark { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: #7ce5aa; font: 400 33px/1 Manrope, sans-serif; transform: rotate(-18deg); }
 .hero-stat .stat-growth { grid-column: 1; grid-row: 3; justify-self: start; padding: 3px 8px; border-radius: 15px; background: #f2faf5; color: #123d32; font-size: 9px; font-weight: 700; }
 .hero-stat small { grid-column: 1 / -1; grid-row: 4; color: #e1f0e7; font-size: 9px; }
 
 .hero-purpose {
   position: absolute;
   z-index: 4;
-  right: 5%;
+  right: 16%;
   bottom: 9%;
   width: min(270px, 25%);
+  isolation: isolate;
   color: #1e3029;
+}
+
+.hero-purpose::before {
+  position: absolute;
+  z-index: -1;
+  inset: -32px -42px -30px;
+  content: '';
+  background: linear-gradient(110deg, #ffffff 0%, #f5fbf7ed 58%, #ffffff00 100%);
 }
 
 .hero-purpose p { margin: 0 0 17px; color: #283c33; font-size: 12px; line-height: 1.55; }
@@ -281,15 +310,15 @@
   .hero h1 { font-size: clamp(37px, 5vw, 54px); letter-spacing: -2.3px; }
   .doctor-card { left: 29%; top: 16%; width: 210px; }
   .hero-features { right: 2.5%; width: 170px; padding: 12px; }
-  .hero-stat { left: 7%; bottom: 8%; width: 220px; }
-  .hero-purpose { right: 3.5%; bottom: 8%; width: 23%; }
+  .hero-stat { left: 11%; bottom: 5%; width: 200px; min-height: 116px; }
+  .hero-purpose { right: 12%; bottom: 8%; width: 23%; }
   .hero-purpose p { font-size: 11px; }
 }
 
 @media (max-width: 640px) {
-  .hero { padding: 0; }
-  .hero-frame { background: radial-gradient(ellipse at 67% 66%, #1a674c 0%, #0d3027 42%, #071b16 100%); }
-  .hero-light-sweep { inset: auto 0 0; width: 100%; height: 31%; border-radius: 48% 48% 0 0 / 14% 14% 0 0; transform: none; background: linear-gradient(160deg, #f4f8f5, #dce7e0); }
+  .hero { height: 100svh; min-height: 700px; max-height: 880px; padding: 0; }
+  .hero-frame { background: radial-gradient(ellipse at 58% 59%, #55eaae73 0%, #1a674c 35%, #0d3027 60%, #071b16 100%); }
+  .hero-light-sweep { z-index: 0; display: block; inset: auto 0 0; width: 100%; height: 23%; border-radius: 0; transform: none; background: linear-gradient(105deg, #f6f9f7 0%, #fff 72%); }
   .hero-header { inset: 0 5%; height: 56px; }
   .hero-header .wordmark { gap: 8px; font-size: 17px; }
   .hero .wordmark-icon { width: 30px; height: 30px; transform: scale(.86); transform-origin: left top; }
@@ -304,22 +333,24 @@
   .hero-header .site-nav > a { padding: 11px 3px; border-bottom: 1px solid #e4ece7; color: #252b29; font-size: 12px; }
   .hero-header .site-nav > a:first-child { border-color: #e4ece7; }
   .hero-header .site-nav > button { align-self: flex-start; margin: 10px 0 0; color: #123d32; }
-  .hero-model-image { top: 22%; bottom: 12%; left: 6%; width: 88%; height: 66%; object-fit: contain; object-position: center; mask-image: radial-gradient(ellipse 70% 78% at 55% 51%, #000 58%, transparent 100%); }
+  .hero-model-image { top: 38%; bottom: auto; left: 6%; width: 88%; height: 46%; object-fit: contain; object-position: center bottom; mask-image: radial-gradient(ellipse 70% 78% at 55% 51%, #000 58%, transparent 100%); }
+  .hero-orbit-accent { opacity: .7; }
   .hero-content { top: 17%; left: 6%; width: 88%; }
   .hero h1 { margin-bottom: 13px; font-size: clamp(30px, 8vw, 40px); line-height: 1.07; letter-spacing: -1.7px; }
   .hero-content .button { width: 176px; height: 41px; padding: 0 14px 0 17px; font-size: 11px; }
-  .doctor-card { z-index: 4; top: 40%; left: auto; right: 4%; width: 164px; min-height: 57px; gap: 7px; padding: 7px; border-radius: 12px; }
+  .doctor-card { z-index: 4; top: 43%; left: auto; right: 4%; width: 154px; min-height: 53px; gap: 6px; padding: 6px; border-radius: 12px; }
   .doctor-avatar { width: 32px; height: 32px; font-size: 8px; }
   .doctor-details strong { font-size: 8px; }
   .doctor-details small { font-size: 7px; }
   .doctor-card > svg { width: 13px; }
   .hero-features { display: none; }
-  .hero-stat { left: 5%; right: auto; bottom: 17%; width: 169px; min-height: 112px; padding: 10px 12px; gap: 4px 6px; border-radius: 14px; }
+  .hero-stat { left: 5%; right: auto; bottom: 22%; width: 164px; min-height: 105px; padding: 9px 11px; gap: 4px 6px; border-radius: 14px; }
   .hero-stat strong { font-size: 24px; }
   .hero-stat .stat-label, .hero-stat small { font-size: 8px; }
   .hero-stat .stat-growth { font-size: 8px; }
   .hero-stat .stat-spark { font-size: 30px; }
-  .hero-purpose { right: 5%; bottom: 5%; width: 48%; }
-  .hero-purpose p { margin-bottom: 8px; font-size: 9px; line-height: 1.35; }
-  .hero-purpose button { width: 100%; height: 36px; padding: 0 11px; font-size: 9px; }
+  .hero-purpose { right: auto; bottom: 4%; left: 6%; width: 88%; }
+  .hero-purpose::before { display: none; }
+  .hero-purpose p { max-width: 260px; margin-bottom: 10px; color: #1e3029; font-size: 10px; line-height: 1.4; }
+  .hero-purpose button { width: 176px; height: 39px; padding: 0 13px 0 16px; font-size: 10px; }
 }
