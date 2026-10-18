@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import {
   ArrowRight, Check, ChevronRight, Clock3, Heart, Menu,
   ShieldCheck, Sparkles, UsersRound, Video, X,
@@ -9,6 +9,20 @@ function App() {
   const [videoOpen, setVideoOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [booked, setBooked] = useState(false)
+  const [heroVisible, setHeroVisible] = useState(true)
+  const heroRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setHeroVisible(entry.isIntersecting)
+    }, { threshold: 0.05 })
+
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [])
 
   const startBooking = () => {
     setBooked(false)
@@ -17,7 +31,7 @@ function App() {
 
   return (
     <main>
-      <section className="hero" id="home">
+      <section className="hero" id="home" ref={heroRef}>
         <div className="hero-frame">
           <div className="hero-light-sweep" aria-hidden="true" />
           <svg className="hero-orbit-accent" viewBox="0 0 1440 720" preserveAspectRatio="none" aria-hidden="true">
@@ -32,6 +46,8 @@ function App() {
             <path d="M 135 515 C 245 405, 382 391, 522 430 C 615 456, 669 486, 731 500" />
             <path className="hero-orbit-accent__glow" d="M 135 515 C 245 405, 382 391, 522 430 C 615 456, 669 486, 731 500" />
           </svg>
+          <span className="hero-signal-node hero-signal-node--primary" aria-hidden="true" />
+          <span className="hero-signal-node hero-signal-node--support" aria-hidden="true" />
           <img className="hero-model-image" src="/images/hero-model-poster.png" alt="" aria-hidden="true" />
           <header className="hero-header">
             <a className="wordmark" href="#home" aria-label="Anex home">
@@ -51,7 +67,7 @@ function App() {
           </header>
           <div className="hero-content">
             <h1><span>Advanced</span><span><em>Healthcare</em> With</span><em>Human Touch</em></h1>
-            <button className="button button-light" onClick={startBooking}>Book Appointment <ArrowRight size={17} /></button>
+            <button className="button button-light" onClick={startBooking}>Find Your Clinician <ArrowRight size={17} /></button>
           </div>
           <div className="doctor-card">
             <span className="doctor-avatar">WA</span>
@@ -76,6 +92,10 @@ function App() {
           </div>
         </div>
       </section>
+      <aside className={`floating-cta ${heroVisible ? '' : 'floating-cta-visible'}`} aria-label="Book an appointment">
+        <p>Smarter Healthcare Solutions Designed To Improve Everyday Wellbeing Through Personalized Medical.</p>
+        <button onClick={startBooking}>Book Appointment <ArrowRight size={17} /></button>
+      </aside>
 
       <section className="care-intro section-wrap" id="care">
         <div className="intro-top"><span className="section-eyebrow">A BETTER KIND OF HEALTHCARE</span><span className="intro-index">01 <i /> 03</span></div>
