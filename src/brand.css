@@ -1,0 +1,34 @@
+:root{color:#252b29;--ink:#252b29;--teal:#123d32;--muted:#69736e;--forest:#123d32;--forest-dark:#0d3028;--forest-soft:#edf3ef;--charcoal:#252b29;--paper:#fff;--mist:#f5f7f5}
+body{color:#252b29}
+.hero{background:#123d32}
+.hero-photo{background-color:#123d32}
+.hero-kicker span,.caption-line{background:#b5cfc1}
+.hero-kicker,.hero-note,.hero-caption{color:#e1eee6}
+.hero-note svg{color:#c4ddcc}
+.hero-stat{background:#123d324d}
+.hero-side-note .side-pill{color:#52655a;border-color:#d7e1da}
+.hero-side-note>p em{color:#123d32}
+.button-dark,.hero-side-note .side-bottom>button{background:#123d32;color:#fff}
+.button-dark:hover,.hero-side-note .side-bottom>button:hover{background:#0d3028}
+.button-light{color:#252b29}
+.site-nav>a:hover,.site-nav>button:hover,.text-button,.care-link,.trust-promise a{color:#123d32}
+.intro-heading h2 em,.trust-heading h2 em,.services-inner h2 em{color:#123d32}
+.section-eyebrow{color:#526b5d}
+.benefit-icon,.option-icon,.promise-icon{color:#123d32}
+.benefit-card>button{color:#123d32;border-color:#d5e1d9}
+.benefit-card>button:hover{background:#123d32}
+.benefit-quote{background:#edf3ef;color:#123d32}
+.benefit-quote>p{color:#30453c}
+.services-band,.trust-promise{background:#f0f4f1}
+.service-decoration{color:#dce7df}
+.quote-mark{color:#789a83}
+.trust-quote blockquote{color:#252b29}
+.quote-avatar,.confirmation-icon{background:#e7efe9;color:#123d32}
+.booking-options>button:hover{border-color:#a7baac;background:#f3f6f3}
+.option-icon{background:#eaf0eb}
+.site-footer .wordmark-icon{color:#123d32;border-color:#d7e3db;background:#edf3ef}
+.footer-brand{color:#123d32}
+.footer-brand-name{font-weight:700;color:#123d32}
+.footer-brand>span:last-child{margin-left:0;font-weight:700;color:#123d32}
+.booking-modal h2 em{color:#123d32}
+.stars{color:#7f977f}
